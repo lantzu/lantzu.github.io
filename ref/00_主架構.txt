@@ -1,0 +1,1 @@
+這裡會製作一個網站, 參考這個樣版: https://wordpress.com/zh-tw/theme/ueno?ref=logged-out-homepage-lp , 但是文章還要分類, 並且文章裡面可以放照片, 以後的工作流會是我寫純文字檔在 ref 內, 並且也會放照片檔, 然後文字檔中會標註照片位置, 然後你會重新幫我生成網頁, 再讓我推上去

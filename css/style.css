@@ -1,10 +1,14 @@
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --accent-color: #333333;
-    --secondary-color: #666666;
-    --grid-gap: 2rem;
-    --max-width: 1000px;
+    --bg-color: #f8f4ff;
+    --card-bg: #ffffff;
+    --text-color: #2d2a3e;
+    --accent-color: #673ab7;
+    --secondary-color: #9575cd;
+    --muted-color: #b39ddb;
+    --grid-gap: 2.5rem;
+    --max-width: 1100px;
+    --border-radius: 16px;
+    --shadow: 0 10px 30px rgba(103, 58, 183, 0.05);
 }
 
 * {
@@ -17,53 +21,65 @@ body {
     font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.6;
-    padding: 2rem;
+    line-height: 1.7;
+    padding: 2rem 1rem;
+    transition: background-color 0.3s ease;
 }
 
 /* Header & Navigation */
 header {
     max-width: var(--max-width);
-    margin: 0 auto 4rem auto;
+    margin: 0 auto 5rem auto;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 2px solid var(--text-color);
-    padding-bottom: 1rem;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--muted-color);
 }
 
 header h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 nav a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: bold;
+    font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-color);
 }
 
 /* Hero Section */
 .hero {
     max-width: var(--max-width);
-    margin: 0 auto 6rem auto;
+    margin: 0 auto 8rem auto;
+    text-align: left;
 }
 
 .hero h2 {
-    font-size: 4rem;
-    line-height: 1;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 0.95;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     font-weight: 900;
+    color: var(--accent-color);
+    letter-spacing: -0.02em;
 }
 
 /* Post Grid */
@@ -71,75 +87,143 @@ nav a {
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
     gap: var(--grid-gap);
 }
 
 .post-card {
-    border-top: 1px solid var(--text-color);
-    padding-top: 1rem;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    border: 1px solid rgba(103, 58, 183, 0.05);
+}
+
+.post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(103, 58, 183, 0.1);
 }
 
 .post-card .category {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
     color: var(--secondary-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
 }
 
 .post-card h3 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.3;
+    color: var(--text-color);
 }
 
-.post-card img {
+.post-card .image-placeholder {
+    background: #f1ecf7;
+    aspect-ratio: 16/9;
     width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-}
-
-.post-card:hover img {
-    filter: grayscale(0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--muted-color);
+    border-radius: calc(var(--border-radius) / 2);
+    overflow: hidden;
 }
 
 /* Single Post View */
 article.single-post {
-    max-width: 700px;
+    max-width: 800px;
     margin: 4rem auto;
+    background: var(--card-bg);
+    padding: clamp(2rem, 5vw, 4rem);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+article.single-post .category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    font-weight: 700;
+    letter-spacing: 0.15em;
 }
 
 article.single-post h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    margin: 1.5rem 0 1rem 0;
+    line-height: 1.1;
+    color: var(--accent-color);
+    font-weight: 900;
 }
 
 article.single-post .meta {
-    margin-bottom: 3rem;
-    font-size: 0.9rem;
-    color: var(--secondary-color);
+    margin-bottom: 4rem;
+    font-size: 0.95rem;
+    color: var(--muted-color);
+    font-weight: 600;
 }
 
-article.single-post img {
+article.single-post .post-image {
+    background: #f1ecf7;
     width: 100%;
-    margin: 2rem 0;
+    min-height: 400px;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted-color);
+    border-radius: calc(var(--border-radius) / 2);
+    font-size: 1.1rem;
 }
 
 article.single-post p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #4a455a;
 }
 
+.back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.back-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Footer */
+footer {
+    max-width: var(--max-width);
+    margin: 8rem auto 2rem auto;
+    border-top: 1px solid var(--muted-color);
+    padding-top: 2rem;
+    font-size: 0.75rem;
+    color: var(--secondary-color);
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .post-grid {
         grid-template-columns: 1fr;
     }
     .hero h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
+    }
+    .post-card {
+        padding: 1.5rem;
     }
 }

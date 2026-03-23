@@ -1,14 +1,12 @@
 :root {
-    --bg-color: #f8f4ff;
-    --card-bg: #ffffff;
-    --text-color: #2d2a3e;
-    --accent-color: #673ab7;
-    --secondary-color: #9575cd;
-    --muted-color: #b39ddb;
-    --grid-gap: 2.5rem;
-    --max-width: 1100px;
-    --border-radius: 16px;
-    --shadow: 0 10px 30px rgba(103, 58, 183, 0.05);
+    --bg-color: #ACC5CA;
+    --secondary-bg: #BED7DA;
+    --text-color: #0C181C;
+    --secondary-text: #143039;
+    --grid-gap: 2rem;
+    --max-width-wide: 1200px; /* 從 1000px 擴大至 1200px */
+    --max-width-standard: 620px;
+    --root-padding: clamp(2rem, 8vw, 5.06rem);
 }
 
 * {
@@ -18,31 +16,35 @@
 }
 
 body {
-    font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+    font-family: 'Cormorant Garamond', serif;
     background-color: var(--bg-color);
     color: var(--text-color);
-    line-height: 1.7;
-    padding: 2rem 1rem;
-    transition: background-color 0.3s ease;
+    line-height: 1.6;
+    padding: var(--root-padding);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.1;
 }
 
 /* Header & Navigation */
 header {
-    max-width: var(--max-width);
+    max-width: var(--max-width-wide);
     margin: 0 auto 5rem auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--muted-color);
 }
 
-header h1 {
-    font-size: 1.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent-color);
-    font-weight: 700;
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
 }
 
 nav ul {
@@ -54,176 +56,254 @@ nav ul {
 nav a {
     text-decoration: none;
     color: var(--text-color);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    transition: color 0.3s ease;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
 }
 
 nav a:hover {
-    color: var(--accent-color);
+    opacity: 0.6;
 }
 
 /* Hero Section */
 .hero {
-    max-width: var(--max-width);
-    margin: 0 auto 8rem auto;
-    text-align: left;
+    max-width: var(--max-width-wide);
+    margin: 0 auto 6rem auto;
 }
 
-.hero h2 {
-    font-size: clamp(3rem, 10vw, 5.5rem);
-    line-height: 0.95;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    font-weight: 900;
-    color: var(--accent-color);
-    letter-spacing: -0.02em;
+.hero-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(3.5rem, 10vw, 5.5rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    letter-spacing: 0;
 }
 
-/* Post Grid */
-.post-grid {
-    max-width: var(--max-width);
+.hero-subtitle {
+    font-family: 'Caveat', cursive; /* 設定為手寫體 */
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem); /* 稍微調大字級以利手寫體閱讀 */
+    max-width: 700px; /* 配合左側擴大，同步放寬副標題限制 */
+    line-height: 1.3;
+    opacity: 0.9;
+    color: var(--secondary-text);
+}
+
+/* Layout: Main Content + Sidebar */
+.content-wrapper {
+    max-width: var(--max-width-wide);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
-    gap: var(--grid-gap);
+    display: flex;
+    gap: 5rem; /* 稍微增加間距讓畫面更開闊 */
+    align-items: flex-start;
+}
+
+.post-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* 改為垂直排列卡片 */
+    gap: 4rem;
+}
+
+/* Post Card (Horizontal Layout) */
+.post-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
 
 .post-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    padding: 2.5rem;
     display: flex;
-    flex-direction: column;
-    box-shadow: var(--shadow);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-    border: 1px solid rgba(103, 58, 183, 0.05);
+    flex-direction: row; /* 水平排列圖文 */
+    gap: 2.5rem;
+    align-items: flex-start; /* 讓文字對齊縮圖上側 */
 }
 
-.post-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(103, 58, 183, 0.1);
+.post-image-container {
+    width: 320px; /* 固定縮圖寬度 */
+    flex-shrink: 0;
 }
 
-.post-card .category {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: var(--secondary-color);
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-}
-
-.post-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.3;
-    color: var(--text-color);
-}
-
-.post-card .image-placeholder {
-    background: #f1ecf7;
-    aspect-ratio: 16/9;
+.image-placeholder {
+    background: var(--secondary-bg);
+    aspect-ratio: 4/3; /* 改為較適合水平排列的比例 */
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
-    color: var(--muted-color);
-    border-radius: calc(var(--border-radius) / 2);
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    transition: opacity 0.3s ease;
     overflow: hidden;
 }
 
-/* Single Post View */
-article.single-post {
-    max-width: 800px;
-    margin: 4rem auto;
-    background: var(--card-bg);
-    padding: clamp(2rem, 5vw, 4rem);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+.post-card-link:hover .image-placeholder {
+    opacity: 0.6;
 }
 
-article.single-post .category {
-    font-size: 0.8rem;
+.post-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.2rem; /* 微調標題高度以精確對齊縮圖頂部 */
+}
+
+.post-card .category {
+    font-size: 0.9rem;
     text-transform: uppercase;
-    color: var(--secondary-color);
-    font-weight: 700;
     letter-spacing: 0.15em;
+    color: var(--secondary-text);
+    font-weight: 700;
+}
+
+.post-card h3 {
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.post-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    opacity: 0.7;
+    margin-top: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 限制顯示兩行預覽文字 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 340px;
+    position: sticky;
+    top: 2rem;
+    min-height: 700px; /* 增加最小高度確保側欄不會比 FB 插件短 */
+    overflow: visible;
+    flex-shrink: 0;
+}
+
+.sidebar-block {
+    width: 100%;
+    min-height: 550px;
+}
+
+.sidebar-title {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+/* 強制 FB 插件寬高顯示，防止被截斷 */
+.fb-page, 
+.fb-page span, 
+.fb-page iframe {
+    width: 340px !important;
+    height: 500px !important;
+    display: block !important;
+    min-height: 500px !important;
+}
+
+/* Single Post View Consistency */
+article.single-post {
+    max-width: var(--max-width-standard);
+    margin: 4rem auto;
+}
+
+.post-header {
+    margin-bottom: 4rem;
+}
+
+.post-header .category {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--secondary-text);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.post-header .meta {
+    font-size: 1.1rem;
+    opacity: 0.6;
+    margin-top: 1rem;
 }
 
 article.single-post h1 {
-    font-size: clamp(2.2rem, 6vw, 4rem);
-    margin: 1.5rem 0 1rem 0;
-    line-height: 1.1;
-    color: var(--accent-color);
-    font-weight: 900;
-}
-
-article.single-post .meta {
-    margin-bottom: 4rem;
-    font-size: 0.95rem;
-    color: var(--muted-color);
-    font-weight: 600;
-}
-
-article.single-post .post-image {
-    background: #f1ecf7;
-    width: 100%;
-    min-height: 400px;
-    margin: 3rem 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted-color);
-    border-radius: calc(var(--border-radius) / 2);
-    font-size: 1.1rem;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin: 0;
 }
 
 article.single-post p {
+    font-size: 1.35rem;
     margin-bottom: 2rem;
-    font-size: 1.1rem;
-    color: #4a455a;
+    line-height: 1.5;
+}
+
+.post-image {
+    background: var(--secondary-bg);
+    width: 100%;
+    aspect-ratio: 3/2;
+    margin: 4rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-text);
 }
 
 .back-link {
     display: inline-block;
-    margin-top: 2rem;
-    color: var(--accent-color);
+    margin-top: 4rem;
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 2px;
 }
 
 .back-link:hover {
-    color: var(--secondary-color);
+    opacity: 0.6;
 }
 
 /* Footer */
 footer {
-    max-width: var(--max-width);
-    margin: 8rem auto 2rem auto;
-    border-top: 1px solid var(--muted-color);
-    padding-top: 2rem;
-    font-size: 0.75rem;
-    color: var(--secondary-color);
-    text-align: center;
-    letter-spacing: 0.05em;
+    max-width: var(--max-width-wide);
+    margin: 10rem auto 0 auto;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    text-align: left;
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        position: static;
+        margin-top: 4rem;
+    }
+}
+
 @media (max-width: 768px) {
     .post-grid {
         grid-template-columns: 1fr;
     }
-    .hero h2 {
-        font-size: 3rem;
-    }
     .post-card {
-        padding: 1.5rem;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .post-image-container {
+        width: 100%;
+    }
+    .hero h2 {
+        font-size: 3.5rem;
+    }
+    .header-content {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
     }
 }

@@ -7,36 +7,89 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v19.0"></script>
+
     <header>
-        <h1>Lantzu</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Work</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <h1 class="site-title"><a href="index.html" style="text-decoration: none; color: inherit;">Lantzu</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="#">旅遊</a></li>
+                    <li><a href="#">小說</a></li>
+                    <li><a href="#">生活</a></li>
+                    <li><a href="#">關於</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
         <section class="hero">
-            <h2>Minimalist<br>by Design.</h2>
+            <h2 class="hero-title">Ink & Tiny Footprints</h2>
+            <p class="hero-subtitle">From boarding passes to bedtime stories. The messy, beautiful family travel and parenting journey of a writer.</p>
         </section>
 
-        <section class="post-grid">
-            <!-- Article 1: Thailand Travel -->
-            <a href="posts/thailand_travel.html" style="text-decoration: none;">
-                <article class="post-card">
-                    <span class="category">旅遊</span>
-                    <h3>準備出發：泰國旅遊計畫</h3>
-                    <div class="image-placeholder">
-                        [THAILAND PHOTO]
+        <div class="content-wrapper">
+            <section class="post-grid">
+                <!-- Article 1: Thailand Travel -->
+                <a href="posts/thailand_travel.html" class="post-card-link">
+                    <article class="post-card">
+                        <div class="post-image-container">
+                            <div class="image-placeholder">
+                                [THAILAND PHOTO]
+                            </div>
+                        </div>
+                        <div class="post-info">
+                            <span class="category">旅遊</span>
+                            <h3>準備出發：泰國旅遊計畫</h3>
+                            <p class="post-excerpt">開始規劃期待已久的泰國之旅，從曼谷到清邁的冒險即將展開...</p>
+                        </div>
+                    </article>
+                </a>
+
+                <!-- Article 2: Life (Placeholder) -->
+                <a href="#" class="post-card-link">
+                    <article class="post-card">
+                        <div class="post-image-container">
+                            <div class="image-placeholder">
+                                [LIFE PHOTO]
+                            </div>
+                        </div>
+                        <div class="post-info">
+                            <span class="category">生活</span>
+                            <h3>莊園街的午後：關於寫作與日常</h3>
+                            <p class="post-excerpt">在墨水與瑣碎的育兒生活之間，尋找那一抹屬於創作者的寧靜時光...</p>
+                        </div>
+                    </article>
+                </a>
+            </section>
+
+            <aside class="sidebar">
+                <div class="sidebar-block">
+                    <h4 class="sidebar-title">Follow Me</h4>
+                    <!-- FB Embed -->
+                    <div class="fb-page" 
+                        data-href="https://www.facebook.com/profile.php?id=100064143940654" 
+                        data-tabs="timeline" 
+                        data-width="340" 
+                        data-height="500" 
+                        data-small-header="false" 
+                        data-adapt-container-width="true" 
+                        data-hide-cover="false" 
+                        data-show-facepile="true">
+                        <blockquote cite="https://www.facebook.com/profile.php?id=100064143940654" class="fb-xfbml-parse-ignore">
+                            <a href="https://www.facebook.com/profile.php?id=100064143940654">莊園街的日常</a>
+                        </blockquote>
                     </div>
-                </article>
-            </a>
-        </section>
+                </div>
+            </aside>
+        </div>
     </main>
 
     <footer>

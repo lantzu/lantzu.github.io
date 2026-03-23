@@ -1,1 +1,3 @@
-這裡會製作一個網站, 參考這個樣版: https://wordpress.com/zh-tw/theme/ueno?ref=logged-out-homepage-lp , 但是文章還要分類, 並且文章裡面可以放照片, 以後的工作流會是我寫純文字檔在 ref 內, 並且也會放照片檔, 然後文字檔中會標註照片位置, 然後你會重新幫我生成網頁, 再讓我推上去
+這裡會製作一個網站, 參考這個樣版: https://wordpress.com/zh-tw/theme/dawson?tab_filter=portfolio&style_variation=pastel-blue (Dawson 風格), 並採用莫蘭迪淺紫色 (#F3F0F7, #4E4B59, #A69CB7) 的配色。
+
+文章要分類, 並且文章裡面可以放照片, 以後的工作流會是我寫純文字檔在 ref 內, 並且也會放照片檔, 然後文字檔中會標註照片位置, 然後你會重新幫我生成網頁, 再讓我推上去。

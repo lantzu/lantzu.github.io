@@ -1,0 +1,16 @@
+{
+  "site_title": "Lantzu's Portfolio",
+  "theme": "Dawson-inspired",
+  "colors": {
+    "background": "#F3F0F7",
+    "text_primary": "#4E4B59",
+    "accent": "#A69CB7",
+    "border": "#DED8E5"
+  },
+  "typography": {
+    "headings": "'Cormorant Garamond', serif",
+    "body": "'Montserrat', sans-serif"
+  },
+  "categories": ["旅遊"],
+  "author": "Lantzu"
+}
